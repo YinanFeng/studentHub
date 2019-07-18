@@ -1,3 +1,5 @@
+package com.studentHub.mentor.websocket;
+
 import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -48,7 +50,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 //        for (Channel channel : channels) {
 //            channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 加入"));
 //        }
-//        channels.add(ctx.channel());
+        channels.add(ctx.channel());
         System.out.println(incoming.isActive());
         System.out.println("Client:" + incoming.remoteAddress() + "加入");
         System.out.println(incoming.isActive());
