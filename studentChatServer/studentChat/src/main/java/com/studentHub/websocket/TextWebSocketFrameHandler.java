@@ -1,3 +1,5 @@
+package com.studentHub.websocket;
+
 import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
