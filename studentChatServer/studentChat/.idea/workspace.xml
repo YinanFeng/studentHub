@@ -315,7 +315,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="13" y="173" width="1280" height="728" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
