@@ -1,7 +1,13 @@
 eureka/.idea/
 eureka/.DS_Store
+eureka/*.iml
 mentorChatServer/.idea/
 mentorChatServer/.DS_Store
+mentorChatServer/*.iml
 studentChatServer/.idea/
 studentChatServer/.DS_Store
+studentChatServer/*.iml
+matchCentre/.idea/
+matchCentre/*.iml
+matchCentre/.DS_Store
 .DS_store
