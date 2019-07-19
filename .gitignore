@@ -7,6 +7,9 @@ mentorChatServer/*.iml
 studentChatServer/.idea/
 studentChatServer/.DS_Store
 studentChatServer/*.iml
+studentChatServer/studentChat/.DS_Store
+studentChatServer/studentChat/.idea/
+stduentChatServer/studentChat/*.iml
 matchCentre/.idea/
 matchCentre/*.iml
 matchCentre/.DS_Store
