@@ -1,0 +1,7 @@
+eureka/.idea/*
+eureka/.DS_Store
+mentorChatServer/.idea/*
+mentorChatServer/.DS_Store
+studentChatServer/.idea/*
+studentChatServer/.DS_Store
+.DS_store
