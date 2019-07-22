@@ -21,6 +21,13 @@
              socket.onopen = function(event) {
                  var ta = document.getElementById('responseText');
                  ta.value = "连接开启!";
+                 m = {
+                    userInfo:true,
+                    mentorId:"dsdffe",
+                    message:"edrfd",
+                    type:"1"
+                 };
+                 send(null);
              };
              socket.onclose = function(event) {
                  var ta = document.getElementById('responseText');
@@ -33,11 +40,27 @@
         
 
         function send(message) {
+            let mess = null;
+            if(message == null){
+                mess = {
+                    userInfo:true,
+                    mentorId:"dsdffe",
+                    message:"edrfd",
+                    type:"1"
+                 };
+            }else{
+                mess = {
+                    userInfo:false,
+                    mentorId:"dsdffe",
+                    message:"edrfd",
+                    type:"1"
+                 };
+            }
             testObj = {
                 name:'a',
                 message:'testtesttest'
             };
-            var obj = JSON.stringify(testObj);
+            var obj = JSON.stringify(mess);
 
             if (!window.WebSocket) {
                 return;

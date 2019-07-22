@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class mentorChatController {
+public class MentorChatController {
 
     @RequestMapping("/hello")
     public String index(@RequestParam String name) {

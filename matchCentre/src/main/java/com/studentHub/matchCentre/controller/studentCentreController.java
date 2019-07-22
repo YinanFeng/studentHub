@@ -16,11 +16,13 @@ public class StudentCentreController {
             @RequestParam String stuNum,
             @RequestParam String mentorType
     ) {
-        System.out.println(stuNum + mentorType);
 
         if(Data.matchAvailableMentor(stuNum,mentorType)==null){
             return JsonRes.resError();
         }
+
+        System.out.println("newCov"+stuNum + mentorType);
+
         return JsonRes.resSuccess();
     }
 
@@ -35,6 +37,8 @@ public class StudentCentreController {
         if(mentorId == null){
             return JsonRes.resError();
         }
+
+        System.out.println("STUnewMessage" + stuNum + mentorId);
         //send message to mentor
         return JsonRes.resSuccess();
     }
@@ -48,6 +52,8 @@ public class StudentCentreController {
         if(mentorId == null){
             return JsonRes.resError();
         }
+
+        System.out.println("stuLeave" + stuNum + mentorId);
 
         //send this message to mentor by mentorId
 

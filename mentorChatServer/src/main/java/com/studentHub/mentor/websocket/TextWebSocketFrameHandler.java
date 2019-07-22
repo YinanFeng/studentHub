@@ -1,6 +1,7 @@
 package com.studentHub.mentor.websocket;
 
 import com.alibaba.fastjson.JSONObject;
+import com.studentHub.mentor.common.ChannelMapper;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -9,25 +10,44 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
 
 
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
+
     // 处理从客户端发来的消息，核心方法
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        System.out.println(msg);
+
         Channel incoming = ctx.channel();
-        System.out.println("someone send:" + msg.text());
+
         JSONObject jo = JSONObject.parseObject(msg.text());
-        System.out.println(jo.getString("name"));
-        System.out.println(jo.getString("message"));
-        System.out.println(incoming.isActive());
+        Boolean userInfo = jo.getBoolean("userInfo");
+        String mentorId = jo.getString("mentorId");
+        String message = jo.getString("message");
+        String type = jo.getString("type");
+
+        if(userInfo == true){
+            ChannelMapper.add(mentorId,incoming);
+            System.out.println("new mentor" + mentorId + "connect of type" + type);
+            //connect with matchCenter
+        }else{
+
+            System.out.println(mentorId + " send " + message);
+            //connect with matchCenter and send message
+            //if failed, remove
+        }
+
+
+
         //test
         //ctx.close();
-        System.out.println(incoming.isActive());
+       // System.out.println(incoming.isActive());
 
 //      for (Channel channel : channels) {
 //            if (channel != incoming) {
@@ -46,27 +66,36 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println(incoming.remoteAddress());
+      //  System.out.println(incoming.remoteAddress());
 //        for (Channel channel : channels) {
 //            channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 加入"));
 //        }
         channels.add(ctx.channel());
-        System.out.println(incoming.isActive());
+        //ChannelMapper.add("test",incoming);
+        //System.out.println(incoming.isActive());
         System.out.println("Client:" + incoming.remoteAddress() + "加入");
-        System.out.println(incoming.isActive());
+        //System.out.println(incoming.isActive());
+
     }
 
     // 有通道关闭时响应
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println(incoming.remoteAddress());
+     //   System.out.println(incoming.remoteAddress());
         //for (Channel channel : channels) {
         //    channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 离开"));
         //}
         System.out.println("Client:" + incoming.remoteAddress() + "离开");
-        System.out.println(incoming.isActive());
+       // System.out.println(incoming.isActive());
         channels.remove(ctx.channel());
+
+        String mentorId = ChannelMapper.findMentor(incoming);
+        //inform match center mentor leave
+        ChannelMapper.remove(incoming);
+
+
+
     }
 
     // 通道激活时响应
@@ -92,6 +121,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         // 当出现异常就关闭连接
         cause.printStackTrace();
         ctx.close();
+        ChannelMapper.remove(incoming);
     }
 
 }

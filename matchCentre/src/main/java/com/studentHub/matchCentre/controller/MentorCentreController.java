@@ -20,6 +20,9 @@ public class MentorCentreController {
         if(stuId == null){
             return JsonRes.resError();
         }
+
+        System.out.println("mentorNewMessage" + stuId + mentorId);
+
         //send message to stu by stuId
         return JsonRes.resSuccess();
     }
@@ -31,6 +34,8 @@ public class MentorCentreController {
     ) {
         System.out.println(mentorId);
         Data.addNewAvailbleMentor(mentorId,type);
+
+        System.out.println("mentorJoin" + mentorId + type);
 
         //send this message to stu
 
@@ -47,6 +52,8 @@ public class MentorCentreController {
         if(stuId == null){
             return JsonRes.resError();
         }
+
+        System.out.println("mentorLeave" + mentorId + stuId);
 
         //send this message to stu
 
