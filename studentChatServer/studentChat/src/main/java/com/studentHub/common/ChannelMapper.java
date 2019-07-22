@@ -23,8 +23,10 @@ public class ChannelMapper {
             map.remove(stuId);
             map.put(stuId,channel);
         }
-        System.out.println(stuId);
+        System.out.println("this. is "+stuId);
         System.out.println(channel.remoteAddress());
+        System.out.println(map.get(stuId));
+        System.out.println(map.get("dsdffe"));
     }
 
     public static String findStu(Channel channel){
@@ -39,6 +41,7 @@ public class ChannelMapper {
 
 
     public static Channel get(String stuId) {
+        System.out.println("in get");
         return map.get(stuId);
     }
 
