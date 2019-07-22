@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class studentChatController {
+public class StudentChatController {
 
     @RequestMapping("/hello")
     public String index(@RequestParam String name) {

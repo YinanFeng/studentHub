@@ -13,7 +13,7 @@
              window.WebSocket = window.MozWebSocket;
          }
          if (window.WebSocket) {
-             socket = new WebSocket("ws://localhost:8083/ws");
+             socket = new WebSocket("ws://localhost:8081/ws");
              socket.onmessage = function(event) {
                  var ta = document.getElementById('responseText');
                  ta.value = ta.value + '\n' + event.data
@@ -23,7 +23,7 @@
                  ta.value = "连接开启!";
                  m = {
                     userInfo:true,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };
@@ -44,14 +44,14 @@
             if(message == null){
                 mess = {
                     userInfo:true,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };
             }else{
                 mess = {
                     userInfo:false,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };
