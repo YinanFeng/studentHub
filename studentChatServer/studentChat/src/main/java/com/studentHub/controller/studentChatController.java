@@ -49,7 +49,7 @@ public class StudentChatController {
 
         //need more test? what is different from ctx.close() is this ok?
         cn.close();
-        
+
         return JsonRes.resSuccess();
     }
 }
