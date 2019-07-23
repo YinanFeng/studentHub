@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MentorChatController {
 
     @RequestMapping(value="/mentorChat/receive")
-    JSONObject receiveMessageFromMentor(
+    JSONObject receiveMessageFromStudent(
             @RequestParam("message") String message,
             @RequestParam("mentorId") String mentorId
     );
 
     @RequestMapping(value="/mentorChat/leave")
-    JSONObject mentorLeave(
+    JSONObject studentLeave(
             @RequestParam("mentorId") String mentorId
     );
 

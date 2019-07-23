@@ -2,6 +2,7 @@ package com.studentHub.websocket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.studentHub.common.ChannelMapper;
+import com.studentHub.remoteController.MatchCenterController;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -9,10 +10,12 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-
+    @Autowired
+    MatchCenterController matchCenterController;
 
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
@@ -35,10 +38,11 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         if(userInfo == true){
             //ChannelMapper.add(incoming.toString(),incoming);
             ChannelMapper.add(stuId,incoming);
+            matchCenterController.studentNewCov(stuId,type);
             System.out.println("new mentor" + stuId + "connect of type" + type);
             //connect with matchCenter
         }else{
-
+            matchCenterController.studentNewMessage(stuId,type);
             System.out.println(stuId + " send " + message);
             //connect with matchCenter and send message
             //if failed, remove
@@ -85,7 +89,10 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         channels.remove(ctx.channel());
 
         String stuId = ChannelMapper.findStu(incoming);
+
         //inform match center mentor leave
+        //what if this one is been informed?????? mentor already leave!
+        matchCenterController.studentLeaveCov(stuId);
         ChannelMapper.remove(incoming);
     }
 

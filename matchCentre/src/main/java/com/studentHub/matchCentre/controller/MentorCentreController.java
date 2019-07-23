@@ -15,35 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MentorCentreController {
 
 
-
-
-    //---------test
-
-    @Autowired
-    MentorChatController mentorChatController;
-
     @Autowired
     StudentChatController studentChatController;
 
-    @RequestMapping(value="/hello")
-    public String index(@RequestParam(value="name") String name) {
-        System.out.println("here");
-        mentorChatController.receiveMessageFromMentor("df","dcwed");
-        mentorChatController.mentorLeave("gh");
-
-        studentChatController.mentorLeave("gb");
-        studentChatController.receiveMessageFromMentor("f","fg");
-        //test success
-//        Object msg = new TextWebSocketFrame("testetstetetette \n");
-//        TextWebSocketFrameHandler.channels.writeAndFlush(msg);
-        return "hello "+name+"，this is first messge";
-    }
-
-
-
-
-
-    //---------------test
 
     @PostMapping(value = "/mentor/mentorNewMessage")
     public JSONObject mentorNewMessage(
@@ -57,6 +31,7 @@ public class MentorCentreController {
         }
 
         System.out.println("mentorNewMessage" + stuId + mentorId);
+        studentChatController.receiveMessageFromMentor(message,stuId);
 
         //send message to stu by stuId
         return JsonRes.resSuccess();
@@ -73,6 +48,7 @@ public class MentorCentreController {
         System.out.println("mentorJoin" + mentorId + type);
 
         //send this message to stu
+        //需写接口推送给前端，哪些type的mentor有人
 
         return JsonRes.resSuccess();
     }
@@ -88,9 +64,12 @@ public class MentorCentreController {
             return JsonRes.resError();
         }
 
+
+
         System.out.println("mentorLeave" + mentorId + stuId);
 
         //send this message to stu
+        studentChatController.mentorLeave(stuId);
 
         return JsonRes.resSuccess();
     }
