@@ -3,9 +3,11 @@ package com.studentHub.mentor.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.studentHub.mentor.common.ChannelMapper;
 import com.studentHub.mentor.common.JsonRes;
+import com.studentHub.mentor.remoteController.MatchCenterController;
 import com.studentHub.mentor.websocket.TextWebSocketFrameHandler;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MentorChatController {
 
-    @RequestMapping("/hello")
-    public String index(@RequestParam String name) {
+    @Autowired
+    MatchCenterController matchCenterController;
+
+    @RequestMapping(value="/hello")
+    public String index(@RequestParam(value="name") String name) {
+        System.out.println("here");
+        matchCenterController.mentorJoinCov("frgrb","fvbgf");
+        matchCenterController.mentorNewMessage("ghj","gh");
+        matchCenterController.mentorLeaveCov("gdf");
         //test success
 //        Object msg = new TextWebSocketFrame("testetstetetette \n");
 //        TextWebSocketFrameHandler.channels.writeAndFlush(msg);
