@@ -36,6 +36,8 @@ public class StudentChatController {
     @RequestMapping("/stuChat/receive")
     public JSONObject receiveMessageFromMentor(@RequestParam String message, @RequestParam String stuId) {
 
+        System.out.println("gereeeeee");
+
         Channel cn = ChannelMapper.get(stuId);
         if(cn == null){
             return JsonRes.resError();
@@ -51,6 +53,7 @@ public class StudentChatController {
 
     @RequestMapping("/stuChat/leave")
     public JSONObject mentorLeave(@RequestParam String stuId) {
+        System.out.println("gereeeeee");
         Channel cn = ChannelMapper.get(stuId);
         if(cn == null){
             return JsonRes.resError();
