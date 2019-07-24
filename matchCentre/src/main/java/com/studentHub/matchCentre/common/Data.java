@@ -54,10 +54,22 @@ public class Data {
 
     public static String mentorLeave(String mentorId){
         String stuId = mentorStuGroup.get(mentorId);
-        if(stuId != null){
+        if(stuId != null) {
             stuMentorGroup.remove(stuId);
             mentorStuGroup.remove(mentorId);
             return stuId;
+        }else{
+//
+//            //unmatched mentor leave!
+//            avaMentor.get(type).remove(mentorId);
+
+            //do not need to inform student, so no return.
+            Set<String> allKeys = avaMentor.keySet();
+            for(String key : allKeys){
+                if(avaMentor.get(key).contains(mentorId)){
+                    avaMentor.get(key).remove(mentorId);
+                }
+            }
         }
         return null;
     }
