@@ -25,6 +25,7 @@ public class MentorChatController {
         matchCenterController.mentorJoinCov("frgrb","fvbgf");
         matchCenterController.mentorNewMessage("ghj","gh");
         matchCenterController.mentorLeaveCov("gdf");
+        System.out.println(matchCenterController);
         //test success
 //        Object msg = new TextWebSocketFrame("testetstetetette \n");
 //        TextWebSocketFrameHandler.channels.writeAndFlush(msg);

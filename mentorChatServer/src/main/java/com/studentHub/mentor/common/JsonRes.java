@@ -1,7 +1,9 @@
 package com.studentHub.mentor.common;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JsonRes {
 
     public static JSONObject resSuccess(){

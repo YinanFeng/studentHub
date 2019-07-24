@@ -1,10 +1,12 @@
 package com.studentHub.mentor.common;
 
 import io.netty.channel.Channel;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class ChannelMapper {
 
     //mentorId - channel

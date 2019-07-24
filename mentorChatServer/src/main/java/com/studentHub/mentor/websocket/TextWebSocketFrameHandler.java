@@ -2,6 +2,7 @@ package com.studentHub.mentor.websocket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.studentHub.mentor.common.ChannelMapper;
+import com.studentHub.mentor.messageResolve.MessageResolve;
 import com.studentHub.mentor.remoteController.MatchCenterController;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,14 +12,28 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-    @Autowired
-    MatchCenterController matchCenterController;
+   // @Autowired
+   // MatchCenterController matchCenterController;
+
+    //---test
+//    public static TextWebSocketFrameHandler textWebSocketFrameHandler;
+//
+//    @PostConstruct
+//    public void init(){
+//        textWebSocketFrameHandler=this;
+//        textWebSocketFrameHandler.matchCenterController=this.matchCenterController;
+//    }
+
+    //--test
 
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
@@ -38,10 +53,14 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         if(userInfo == true){
             ChannelMapper.add(mentorId,incoming);
             System.out.println("new mentor" + mentorId + "connect of type" + type);
-            matchCenterController.mentorJoinCov(mentorId,type);
+            MessageResolve.mentorJoin(mentorId,type);
+            //matchCenterController.mentorJoinCov(mentorId,type);
+
+
             //connect with matchCenter
         }else{
-            matchCenterController.mentorNewMessage(mentorId,message);
+            MessageResolve.mentorMessage(mentorId,message);
+            //matchCenterController.mentorNewMessage(mentorId,message);
             System.out.println(mentorId + " send " + message);
             //connect with matchCenter and send message
             //if failed, remove
@@ -100,7 +119,8 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
         //what if student first leave, send to mentor then mentor leave, go to this step
         //will inform student again ??????? not good!
-        matchCenterController.mentorLeaveCov(mentorId);
+        MessageResolve.mentorLeave(mentorId);
+        //matchCenterController.mentorLeaveCov(mentorId);
         ChannelMapper.remove(incoming);
 
 
