@@ -6,6 +6,9 @@ import com.studentHub.matchCentre.common.Data;
 import com.studentHub.matchCentre.common.JsonRes;
 import com.studentHub.matchCentre.remoteController.MentorChatController;
 import com.studentHub.matchCentre.remoteController.StudentChatController;
+import com.studentHub.matchCentre.webSocket.TextWebSocketFrameHandler;
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +33,11 @@ public class StudentCentreController {
         }
 
         System.out.println("newCov"+stuNum + mentorType);
+
+        for(Channel cn : TextWebSocketFrameHandler.channels){
+            System.out.println(cn);
+            cn.writeAndFlush(new TextWebSocketFrame(Data.currentMentor() + "\n"));
+        }
 
         return JsonRes.resSuccess();
     }

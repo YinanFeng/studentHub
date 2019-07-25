@@ -1,5 +1,7 @@
 package com.studentHub.matchCentre.common;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.*;
 
 public class Data {
@@ -72,6 +74,17 @@ public class Data {
             }
         }
         return null;
+    }
+
+    public static JSONObject currentMentor(){
+        JSONObject jo = new JSONObject();
+
+        for(String s : avaMentor.keySet()){
+            jo.put(s, avaMentor.get(s).size());
+        }
+
+        System.out.println("here    "+jo);
+        return jo;
     }
 
 }

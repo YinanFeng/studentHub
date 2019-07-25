@@ -7,34 +7,25 @@
 <body>
     <script type="text/javascript">
         var socket;
-
-        var socket2;
         
         function connectServer() {
          if (!window.WebSocket) {
              window.WebSocket = window.MozWebSocket;
          }
          if (window.WebSocket) {
-             socket = new WebSocket("ws://localhost:8083/ws");
-
-
+             socket = new WebSocket("ws://localhost:8085/ws");
              socket.onmessage = function(event) {
                  var ta = document.getElementById('responseText');
                  ta.value = ta.value + '\n' + event.data
-                 console.log("hereeeee")
+                 console.log("here");
+                 console.log(event.data);
              };
-
-             // socket2.onopen = funtion(event){
-             //    var ta = document.getElementById('responseText');
-             //    ta.value = "hereeeeeeeeee!";
-             // }
-
              socket.onopen = function(event) {
                  var ta = document.getElementById('responseText');
                  ta.value = "连接开启!";
                  m = {
                     userInfo:true,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };
@@ -55,14 +46,14 @@
             if(message == null){
                 mess = {
                     userInfo:true,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };
             }else{
                 mess = {
                     userInfo:false,
-                    mentorId:"dsdffe",
+                    stuId:"dsdffe",
                     message:"edrfd",
                     type:"1"
                  };

@@ -44,6 +44,9 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
         Channel incoming = ctx.channel();
 
+
+
+
         JSONObject jo = JSONObject.parseObject(msg.text());
         Boolean userInfo = jo.getBoolean("userInfo");
         String mentorId = jo.getString("mentorId");
@@ -97,6 +100,8 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         //ChannelMapper.add("test",incoming);
         //System.out.println(incoming.isActive());
         System.out.println("Client:" + incoming.remoteAddress() + "加入");
+
+
         //System.out.println(incoming.isActive());
 
     }
