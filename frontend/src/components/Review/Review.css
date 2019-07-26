@@ -1,0 +1,48 @@
+
+
+
+.review__text {
+    color: #afafaf;
+    font-size: 2em;
+    font-weight: normal;
+}
+  
+.review__reviewer {
+    text-align: right;
+
+    color: grey;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+/* .review__all {
+    
+} */
+
+@keyframes quoteIntro {
+    0%   {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .review__all {
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-name: quoteIntro;
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+  
+    font-size: 0.8em;
+    line-height: 2.5em;
+    max-width: 80em;
+    padding: 1em;
+    position: relative;
+    @include breakpoint(md) {
+      font-size: 1em;
+    }
+    @include breakpoint(lg) {
+      font-size: 1.2em;
+    }
+  }
