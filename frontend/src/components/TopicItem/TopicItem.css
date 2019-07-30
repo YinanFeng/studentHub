@@ -1,0 +1,61 @@
+.topic-item {
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    padding: 1em;
+    position: relative;
+    height: 100%;
+    transition-property: background-color, opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    width: 100%;
+    /* @include clearfix; */
+  }
+
+  .topic-item:hover {
+    background-color: #f3f3f3;
+    outline: none;
+    transition-duration: 0.2s;
+  }
+  
+  .topic-item--is-chosen {
+    opacity: 0.6;
+    transition-duration: 0.2s;
+    pointer-events: none;
+  }
+
+  .topic-item_text-area {
+    display: block; 
+    float: right;
+    line-height: 1.4;
+    padding: 0.5em;
+    position: relative;
+    text-align: left;
+    width: calc(100% - 5em);
+  }
+
+  .topic-item__topic {
+    display: block;
+    font-size: 0.8em;
+    position: relative;
+    font-weight: bold;
+  }
+
+  .topic-item__detail {
+    display: block;
+    font-size: 0.8em;
+    position: relative;
+  }
+
+  .topic-item__picture {
+    border: 1px solid #e6e6e6;
+    display: block;
+    float: left;
+    height: 3.5em;
+    margin-top: 0.3em;
+    position: relative;
+    width: 4em;
+  }

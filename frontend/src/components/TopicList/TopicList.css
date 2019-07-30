@@ -1,0 +1,23 @@
+.topic-list {
+    height: 100%;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    position: relative;
+    width: 100%;
+}
+
+.topic-list__ul {
+    list-style: none;
+    margin: 0;
+    padding: 6.4em 0 4em 0;
+    position: relative;
+  
+    /* @include breakpoint(md) {
+      padding: 6.4em 0 0 0;
+    } */
+  }
+
+  .topic-list__ul > li {
+    display: block;
+    position: relative;
+  }

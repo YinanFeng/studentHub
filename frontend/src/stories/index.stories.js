@@ -11,7 +11,8 @@ import App from '../components/App';
 import Review from '../components/Review/Review';
 import Appbar from '../components/Appbar/Appbar';
 import ProfileChoose from '../components/ProfileChoose/ProfileChoose';
-
+import TopicItem from '../components/TopicItem/TopicItem';
+import TopicList from '../components/TopicList/TopicList';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -29,6 +30,7 @@ storiesOf('IndexPage', module).add('review', () => <Review />)
                               .add('appBar', ()=> <Appbar />)
                               .add('indexPage', ()=>  <div><Appbar /><Review /></div>)
                               .add('profileChoose', ()=> <ProfileChoose />)
-
+                              // .add('topicItem', ()=> <TopicItem /> )
+                              .add('topicList', ()=> <TopicList />)
                               ;
 
