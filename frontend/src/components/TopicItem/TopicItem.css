@@ -22,6 +22,7 @@
   }
   
   .topic-item--is-chosen {
+    background-color: #f3f3f3;
     opacity: 0.6;
     transition-duration: 0.2s;
     pointer-events: none;

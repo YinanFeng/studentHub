@@ -17,15 +17,43 @@ module.exports = {
                 }
             },
             {
+                test:/\.jsx?$/,
+                exclude:/node_modules/,
+                use: [
+                    {
+                      loader: 'babel-loader',
+                      options: {
+                        presets: ['react']
+                      }
+                    }
+                ],
+            },
+            {
                 test:/\.css$/,
                 exclude:/node_modules/,
                 use: ['style-loader','css-loader'] 
-            }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                  'file-loader',
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {
+                      bypassOnDebug: true, // webpack@1.x
+                      disable: true, // webpack@2.x and newer
+                    },
+                  },
+                ],
+              }
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
             template:'./src/index.html'
         })
-    ]
+    ],
+    resolve: {
+        extensions: ['*', '.js', '.jsx']
+    }
 }

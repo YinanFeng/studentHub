@@ -93,6 +93,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
         String stuId = ChannelMapper.findStu(incoming);
 
+        System.out.println("stuId here" + stuId);
         //inform match center mentor leave
         //what if this one is been informed?????? mentor already leave!
         //matchCenterController.studentLeaveCov(stuId);

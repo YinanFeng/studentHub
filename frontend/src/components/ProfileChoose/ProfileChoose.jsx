@@ -24,13 +24,19 @@ const useStyles = makeStyles({
 
 function SimpleDialog(props) {
   const classes = useStyles();
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open, changeProfile } = props;
 
   function handleClose() {
+    //   console.log(props)
+    // console.log("there")
+    // console.log(selectedValue)
     onClose(selectedValue);
   }
 
   function handleListItemClick(value) {
+        // console.log("here")
+        // console.log(value)
+        changeProfile(value)
     onClose(value);
   }
 
@@ -50,7 +56,7 @@ function SimpleDialog(props) {
           </ListItem>
         ))} */}
 
-        <ListItem button onClick={() => handleListItemClick('addAccount')}>
+        <ListItem button onClick={() => handleListItemClick('student')}>
           <ListItemAvatar>
             <Avatar className={classes.avatar}>
             <PersonIcon />
@@ -59,7 +65,7 @@ function SimpleDialog(props) {
           <ListItemText primary="Lovely Student" />
         </ListItem>
 
-        <ListItem button onClick={() => handleListItemClick('addAccount')}>
+        <ListItem button onClick={() => handleListItemClick('mentor')}>
           <ListItemAvatar>
             <Avatar className={classes.avatar}>
             <PersonIcon />
@@ -78,11 +84,12 @@ SimpleDialog.propTypes = {
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default function SimpleDialogDemo() {
+export default function SimpleDialogDemo(props) {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
   function handleClickOpen() {
+    //   console.log(props)
     setOpen(true);
   }
 
@@ -93,12 +100,15 @@ export default function SimpleDialogDemo() {
 
   return (
     <div>
-      <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
-      <br />
+      {/* <Typography variant="subtitle1">Selected: {selectedValue}</Typography> */}
+      {/* <br /> */}
       <Button color="inherit" onClick={handleClickOpen}>
         Join Now
       </Button>
-      <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+      <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose}
+                    changeProfile={props.changeProfile}
+      />
     </div>
   );
 }
+

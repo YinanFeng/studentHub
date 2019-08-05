@@ -6,13 +6,14 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
-import App from '../components/App';
+// import App from '../components/App';
 
 import Review from '../components/Review/Review';
 import Appbar from '../components/Appbar/Appbar';
 import ProfileChoose from '../components/ProfileChoose/ProfileChoose';
 import TopicItem from '../components/TopicItem/TopicItem';
 import TopicList from '../components/TopicList/TopicList';
+import ChatBox from '../components/ChatBox/ChatBox';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -24,7 +25,8 @@ storiesOf('Button', module)
         😀 😎 👍 💯
       </span>
     </Button>
-  )).add('test app', ()=><App />);
+  ));
+  // .add('test app', ()=><App />);
 
 storiesOf('IndexPage', module).add('review', () => <Review />)
                               .add('appBar', ()=> <Appbar />)
@@ -32,5 +34,6 @@ storiesOf('IndexPage', module).add('review', () => <Review />)
                               .add('profileChoose', ()=> <ProfileChoose />)
                               // .add('topicItem', ()=> <TopicItem /> )
                               .add('topicList', ()=> <TopicList />)
+                              // .add('chatBox', ()=><ChatBox />)
                               ;
 
