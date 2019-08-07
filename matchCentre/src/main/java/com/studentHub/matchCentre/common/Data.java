@@ -15,6 +15,7 @@ public class Data {
     }
 
     public static String findMentor(String stuId){
+        System.out.println("mentorId matched" + stuMentorGroup.get(stuId));
             return stuMentorGroup.get(stuId);
 
     }
@@ -25,6 +26,10 @@ public class Data {
             return null;
         }
         String mentorMatched = availableMentor.get(0);
+
+        System.out.println("mentor matched" + mentorMatched);
+        System.out.println("length" + availableMentor.size());
+
         avaMentor.get(type).remove(mentorMatched);
         stuMentorGroup.put(stuId,mentorMatched);
         mentorStuGroup.put(mentorMatched,stuId);

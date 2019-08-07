@@ -68,6 +68,12 @@ class ChatBox extends Component {
 
         socket.onmessage = (event) => {
             addResponseMessage(event.data);
+            var reg = /mentor already leave/;
+            if(reg.test(event.data) == true){
+                this.props.endTheChat()
+                //endTheChat
+                console.log("hereeeeee yessss lalalallalaal")
+            }
             // var ta = document.getElementById('responseText');
             // ta.value = ta.value + '\n' + event.data
         };

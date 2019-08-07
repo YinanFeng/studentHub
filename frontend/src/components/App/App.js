@@ -18,12 +18,14 @@ class App extends Component {
             profile:null,
             topic:null,
             id:null,
-            update:null
+            update:null,
+            endChat:false,
 
         };
         this.chooseProfile = this.chooseProfile.bind(this)
         this.changeTopic = this.changeTopic.bind(this)
         this.updateChat = this.updateChat.bind(this)
+        this.endTheChat = this.endTheChat.bind(this)
     }
 
     chooseProfile(pro){
@@ -42,6 +44,7 @@ class App extends Component {
         this.setState({
             id:uuid,
             topic:tpc,
+            endChat:false,
           }, function() {
             this.updateChat()
           });
@@ -58,14 +61,24 @@ class App extends Component {
         console.log("hereeeeeeeeeee333")
     }
 
+    endTheChat(){
+        var udt = new Date();
+        this.setState({
+            endChat: true,
+            update:udt
+        })
+    }
+
     render(){
-        console.log(this.state)
+        console.log("in appppppp")
+        console.log(this.state.endChat)
+        console.log("in apppppppppp")
         return(
             <div>
                 <Appbar chooseProfile={this.chooseProfile}/>
-                {this.state.profile == null?<Review />:<TopicList changeTopic={this.changeTopic}/>}
+                {this.state.profile == null?<Review />:<TopicList changeTopic={this.changeTopic} endChat={this.state.endChat}/>}
                 {(this.state.topic == null || this.state.id == null) ? 
-                    null:<ChatBox topic={this.state.topic} id={this.state.id} />}
+                    null:<ChatBox key={this.state.id} topic={this.state.topic} id={this.state.id} endTheChat={this.endTheChat}/>}
                 {/* <Review /> */}
                 {/* <h1 className='app-test'>test</h1> */}
                 {/* <ChatBox /> */}

@@ -13,12 +13,13 @@ class TopicItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isChosen : props.isChosen,
+            isChosen: props.isChosen,
             topic: props.topic,
             number: props.number,
             detail: props.detail,
             index: props.index,
-            pic:enrolment
+            pic:enrolment,
+            endChat: props.endChat,
             // key: props.key,
         };
         
@@ -27,6 +28,7 @@ class TopicItem extends Component {
     componentWillReceiveProps(nextProps){
         this.setState({
             isChosen : nextProps.isChosen,
+            endChat: nextProps.endChat,
         })
         
     }
@@ -48,19 +50,19 @@ class TopicItem extends Component {
     }
 
     render() {
-        console.log('here render');
-        const number = this.state.number
-        console.log("in item")
-        console.log(number)
-        console.log(this.state.number[this.state.index])
+        const number = this.state.number;
+        console.log("in topic item")
+        console.log(this.state.endChat)
+        console.log((this.state.isChosen && !this.state.endChat))
+        let item = classname('topic-item', { 'topic-item--is-chosen': (this.state.isChosen && !this.state.endChat) });
         
-        const item = classname('topic-item', { 'topic-item--is-chosen': this.state.isChosen });
+        console.log(item)
         return (
             // <button className={item} onClick={() => onSelect(isAutoplay)}>
  
             <div>
             
-            {(this.state.number[this.state.index]==0 && this.state.isChosen==false)?
+            {(this.state.number[this.state.index]==0 && (this.state.isChosen==false || this.state.endChat==true))?
             <button disabled className="topic-disable-item">
                 <span className="topic-item_text-area">
                     <span className="topic-item__topic">Topic: {this.state.topic}</span>

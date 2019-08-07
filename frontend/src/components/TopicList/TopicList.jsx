@@ -9,14 +9,21 @@ class TopicList extends Component {
         super(props);
 
         this.state = {
-             listContent : topicListContent,
-             socket: null,
-            num:[0,0,0,0]
+            listContent : topicListContent,
+            socket: null,
+            num: [0,0,0,0],
+            endChat: props.endChat
 
         }
         this.chooseTopic = this.chooseTopic.bind(this);
         this.initSocket = this.initSocket.bind(this);
 
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            endChat: nextProps.endChat
+        })
     }
 
     componentWillMount(){
@@ -84,8 +91,7 @@ class TopicList extends Component {
 
 
     chooseTopic(index){
-        console.log('choose');
-        console.log(index);
+
         let lc = this.state.listContent;
         for(var i=0;i<lc.length;i++){
             lc[i].isChosen = false;
@@ -101,7 +107,10 @@ class TopicList extends Component {
     }
 
     render () {
-
+        console.log("in topic List!!!")
+        console.log(this.state.endChat)
+        console.log(this.props.endChat)
+        console.log("in topic List!!!!!!!!")
          return (
              <div className="topic-list">
                 <ul className="topic-list__ul">
@@ -115,6 +124,7 @@ class TopicList extends Component {
                             detail={item.detail}
                             chooseFunc={this.chooseTopic}
                             isChosen={item.isChosen}
+                            endChat={this.state.endChat}
                     //   isAlbumList={isAlbumList}
                     //   isPlay={isPlay}
                     //   isSelected={item.trackId === activeTrackId}
