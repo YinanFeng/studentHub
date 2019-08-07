@@ -11,7 +11,16 @@ Furthermore, many stduents complained that Oweek is too late to get these inform
 
 ***Student Hub*** can solve all of these problems. It provide remote match/chat platform for student and mentor which enable them talk at **anytime and anywhere**.
 
+### Tech Stack
+##### Backend
+-Spring Boot
+-Spring Cloud
+-Netty
 
+##### Frontend
+-React
+-Webpack
+-Storybook(UI management)
 
 npm run storybook
 npm install
