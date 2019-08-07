@@ -24,9 +24,24 @@ Furthermore, many stduents complained that Oweek is too late to get these inform
 - Webpack
 - Storybook(UI management)
 
-
-### Frontend Scripts
 ---
+
+### About Project 
+##### Backend
+Backend consists of 3 microservices and a Eureka.
+- StduentChat: This microservice provide chat service on student side. It use netty to connect with the frontend by WebSocket. Also, it applies feignClient to consume other service.
+- MentorChat: This microservice is similiar with studentChat but provide the service on mentor side
+- MatchCenter: This microservice provide service to deal with logic.
+- Eureka: Used for register all microservice.
+
+
+##### Frontend
+Frontend is a React project. It use storybook to do UI management and use webpack to bundle JavaScript files.
+Also, the project support hot reload.
+
+---
+### Frontend Scripts
+
 ```
 cd <project-name>
 cd frondend
@@ -34,7 +49,9 @@ npm install
 ```
 Install all dependencies
 
-`npm run storybook`
+```
+npm run storybook
+```
 
 `npm install`
 `npm start`
