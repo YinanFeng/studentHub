@@ -15,6 +15,25 @@
     /* @include clearfix; */
   }
 
+  .topic-disable-item {
+
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    padding: 1em;
+    position: relative;
+    height: 100%;
+    transition-property: background-color, opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    width: 100%;
+    /* @include clearfix; */
+    color:grey;
+    opacity:0.6;
+  }
+
   .topic-item:hover {
     background-color: #f3f3f3;
     outline: none;
@@ -23,9 +42,10 @@
   
   .topic-item--is-chosen {
     background-color: #f3f3f3;
-    opacity: 0.6;
+    opacity: 0.8;
     transition-duration: 0.2s;
     pointer-events: none;
+    color:#3f51b5;
   }
 
   .topic-item_text-area {
@@ -52,11 +72,19 @@
   }
 
   .topic-item__picture {
-    border: 1px solid #e6e6e6;
+    /* border: 1px solid #e6e6e6; */
     display: block;
     float: left;
     height: 3.5em;
     margin-top: 0.3em;
     position: relative;
     width: 4em;
+  }
+
+  .topic-item__image {
+    position: relative;
+    right:1em;
+    top:-0.1em;
+    height: 4em;
+    width: 4.1em;
   }
