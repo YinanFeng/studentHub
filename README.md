@@ -43,7 +43,7 @@ Then start **StduentChat, MentorChat, MatchCenter** in any order. But you may ne
 Frontend is a **React** project. It use **webpack** to bundle JavaScript files and use **storybook** to do UI management.
 Also, the project support hot reload.
 
-##### Scripts
+##### Frontend Scripts
 
 ```
 cd <project-name>
