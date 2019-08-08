@@ -7,7 +7,7 @@ import logo from './logo.jpeg';
 
 // import './ChatBox.css';
  
-class ChatBox extends Component {
+class  MentorChatBox extends Component {
     // componentDidMount() {
     //     // addResponseMessage("Welcome to this awesome chat!");
     // }
@@ -37,9 +37,9 @@ class ChatBox extends Component {
         }else if(this.props.topic == 3){
             stuTpc = "Study and Career plan"
         }
-        var msg = `Welcom to StudentHub, the topic you have chosen is "${stuTpc}"!`
+        var msg = `Hi awesome mentor, the topic you have chosen is "${stuTpc}"!`
         addResponseMessage(msg)
-        addResponseMessage("Start your chat with our awesome mentor now!")
+        addResponseMessage("Please wait for your lovely student!")
         console.log("heredfgushhb")
         console.log(this.props)
         this.initSocket()
@@ -48,7 +48,7 @@ class ChatBox extends Component {
     componentWillUnmount(){
         let msg = {
             userInfo: false,
-            stuId: this.props.id,
+            mentorId: this.props.id,
             message: "close",
             type: this.props.topic,
             close: true,
@@ -59,20 +59,20 @@ class ChatBox extends Component {
     }
 
     initSocket(){
-        var socket = new WebSocket("ws://localhost:8081/ws");
+        var socket = new WebSocket("ws://localhost:8083/ws");
         //add socket.onmessage
-        var stuid = this.props.id
-        var stuTopic = this.props.topic
+        var mentorid = this.props.id
+        var mentorTopic = this.props.topic
         socket.onopen = function(event){
             console.log("open");
             // this.sendMessage();
 
             let message = {
                 userInfo:true,
-                stuId:stuid,
+                mentorId:mentorid,
                 message:"testMessage",
-                type:stuTopic,
-                close:false,
+                type:mentorTopic,
+                close: false,
             };
             var obj1 = JSON.stringify(message);
             //in socket, this means socket??
@@ -82,7 +82,7 @@ class ChatBox extends Component {
 
         socket.onmessage = (event) => {
             addResponseMessage(event.data);
-            var reg = /mentor already leave/;
+            var reg = /student already leave/;
             if(reg.test(event.data) == true){
                 this.props.endTheChat()
                 //endTheChat
@@ -114,7 +114,7 @@ class ChatBox extends Component {
 
         let message = {
             userInfo: false,
-            stuId: this.props.id,
+            mentorId: this.props.id,
             message: newMessage,
             type: this.props.topic,
             close: false,
@@ -129,7 +129,7 @@ class ChatBox extends Component {
             <div className="App">
                 <Chat
                     handleNewUserMessage={this.handleNewUserMessage}
-                    profileAvatar={logo}
+                    profileAvatar={logo} 
                     title="Student Hub!"
                     subtitle="And my cool subtitle"
                     fullScreenMode={true}
@@ -140,4 +140,4 @@ class ChatBox extends Component {
     }
 }
  
-export default ChatBox;
+export default MentorChatBox;

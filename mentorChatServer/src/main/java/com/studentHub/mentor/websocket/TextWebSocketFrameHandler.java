@@ -45,15 +45,14 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         Channel incoming = ctx.channel();
 
 
-
-
         JSONObject jo = JSONObject.parseObject(msg.text());
         Boolean userInfo = jo.getBoolean("userInfo");
         String mentorId = jo.getString("mentorId");
         String message = jo.getString("message");
         String type = jo.getString("type");
+        Boolean close = jo.getBoolean("close");
 
-        if(userInfo == true){
+        if(userInfo == true) {
             ChannelMapper.add(mentorId,incoming);
             System.out.println("new mentor" + mentorId + "connect of type" + type);
             MessageResolve.mentorJoin(mentorId,type);
@@ -61,31 +60,16 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
 
             //connect with matchCenter
-        }else{
-            MessageResolve.mentorMessage(mentorId,message);
-            //matchCenterController.mentorNewMessage(mentorId,message);
-            System.out.println(mentorId + " send " + message);
-            //connect with matchCenter and send message
-            //if failed, remove
+        }else if(close == true) {
+            ctx.close();
+        }else {
+                MessageResolve.mentorMessage(mentorId,message);
+                //matchCenterController.mentorNewMessage(mentorId,message);
+                System.out.println(mentorId + " send " + message);
+                //connect with matchCenter and send message
+                //if failed, remove
         }
 
-
-
-        //test
-        //ctx.close();
-       // System.out.println(incoming.isActive());
-
-//      for (Channel channel : channels) {
-//            if (channel != incoming) {
-//                channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
-//            } else {
-//                channel.writeAndFlush(new TextWebSocketFrame("[本地发送]：" + msg.text()));
-//                // Console打印，可以删除
-//                StringBuffer sb = new StringBuffer();
-//                sb.append(incoming.remoteAddress()).append("->").append(msg.text());
-//                System.out.println(sb.toString());
-//            }
-//        }
     }
 
     // 有新通道加入的时候响应

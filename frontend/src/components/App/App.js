@@ -6,7 +6,8 @@ import TopicList from '../TopicList/TopicList';
 // import ChatBox from '../ChatBox/ChatBox';
 import Appbar from '../Appbar/Appbar';
 import ChatBox from '../ChatBox/ChatBox';
-import { runInThisContext } from 'vm';
+import MentorChatBox from '../MentorChatBox/MentorChatBox';
+// import { runInThisContext } from 'vm';
 
 
 
@@ -76,9 +77,13 @@ class App extends Component {
         return(
             <div>
                 <Appbar chooseProfile={this.chooseProfile}/>
-                {this.state.profile == null?<Review />:<TopicList changeTopic={this.changeTopic} endChat={this.state.endChat}/>}
-                {(this.state.topic == null || this.state.id == null) ? 
-                    null:<ChatBox key={this.state.id} topic={this.state.topic} id={this.state.id} endTheChat={this.endTheChat}/>}
+                {this.state.profile == null?<Review />:<TopicList changeTopic={this.changeTopic} endChat={this.state.endChat}
+                                                                  profile={this.state.profile}/>}
+                {(this.state.topic != null && this.state.id != null && this.state.profile == "student") ? 
+                    <ChatBox key={this.state.id} topic={this.state.topic} id={this.state.id} endTheChat={this.endTheChat}/>:null}
+
+                {(this.state.topic != null && this.state.id != null && this.state.profile == "mentor") ? 
+                    <MentorChatBox key={this.state.id} topic={this.state.topic} id={this.state.id} endTheChat={this.endTheChat}/>:null}
                 {/* <Review /> */}
                 {/* <h1 className='app-test'>test</h1> */}
                 {/* <ChatBox /> */}

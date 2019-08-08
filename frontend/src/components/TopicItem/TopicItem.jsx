@@ -20,6 +20,7 @@ class TopicItem extends Component {
             index: props.index,
             pic:enrolment,
             endChat: props.endChat,
+            profile: props.profile,
             // key: props.key,
         };
         
@@ -62,7 +63,7 @@ class TopicItem extends Component {
  
             <div>
             
-            {(this.state.number[this.state.index]==0 && (this.state.isChosen==false || this.state.endChat==true))?
+            {(this.state.number[this.state.index]==0 && (this.state.isChosen==false || this.state.endChat==true) && this.state.profile != "mentor")?
             <button disabled className="topic-disable-item">
                 <span className="topic-item_text-area">
                     <span className="topic-item__topic">Topic: {this.state.topic}</span>

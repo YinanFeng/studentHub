@@ -32,6 +32,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         String stuId = jo.getString("stuId");
         String message = jo.getString("message");
         String type = jo.getString("type");
+        Boolean close = jo.getBoolean("close");
         //test
         //ctx.close();
         System.out.println(incoming.isActive());
@@ -43,7 +44,9 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             MessageResolve.stuJoin(stuId,type);
             System.out.println("new mentor" + stuId + "connect of type" + type);
             //connect with matchCenter
-        }else{
+        }else if(close == true){
+            ctx.close();
+        }else {
             //matchCenterController.studentNewMessage(stuId,message);
             MessageResolve.stuMessage(stuId,message);
             System.out.println(stuId + " send " + message);
