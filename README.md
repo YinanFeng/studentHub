@@ -16,6 +16,7 @@ Furthermore, many stduents complained that Oweek is too late to get these inform
 ### Tech Stack
 ##### Backend
 - Spring Boot
+- Maven
 - Spring Cloud
 - Netty
 
@@ -28,19 +29,21 @@ Furthermore, many stduents complained that Oweek is too late to get these inform
 
 ### About Project 
 ##### Backend
-Backend consists of 3 microservices and a Eureka.
-- StduentChat: This microservice provide chat service on student side. It use netty to connect with the frontend by WebSocket. Also, it applies feignClient to consume other service.
-- MentorChat: This microservice is similiar with studentChat but provide the service on mentor side
-- MatchCenter: This microservice provide service to deal with logic.
-- Eureka: Used for register all microservice.
+This is a spring-cloud project, and consists of 3 microservices and Eureka.
 
+Start ***Eureka*** first, which works as a register-center.
+Then start ***StduentChat, MentorChat, MatchCenter*** in any order. But you may need to wait for a few minutes enable the microservices connect and communicate with each other.
+
+- Eureka: Used for register all microservice.
+- StduentChat: This microservice provide chat service on student side. It use netty to connect with the frontend by WebSocket. Also, it applies feignClient to consume other service.
+- MentorChat: It is similiar with studentChat but provide the service on mentor side
+- MatchCenter: This microservice provide service to deal with logic.
 
 ##### Frontend
 Frontend is a React project. It use storybook to do UI management and use webpack to bundle JavaScript files.
 Also, the project support hot reload.
 
----
-### Frontend Scripts
+###### Scripts
 
 ```
 cd <project-name>
@@ -56,5 +59,3 @@ npm run storybook
 Show all UI components with storybook
 
 
-`npm install`
-`npm start`
