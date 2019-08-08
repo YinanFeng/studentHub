@@ -10,7 +10,7 @@ class Review extends Component {
             <div>
                 <blockquote className="review__all">
                     <p className="review__text">" The mentor solves me lots of problem and give me many tips for uni which is very helpful. We keep in touch until now and become very good friend. "</p>
-                    <footer className="review__reviewer">— Sarah, student</footer>
+                    <footer className="review__reviewer">— Ivy, student</footer>
                 </blockquote>
                 <blockquote className="review__all">
                     <p className="review__text">" I really enjoy chatting and sharing my experience with student. "</p>
