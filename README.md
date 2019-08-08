@@ -63,8 +63,6 @@ Show all UI components with storybook
 ### Demo
 
 Index & Choose Profile<br />
-<img src="./pic-readme/index-1.png" width = "240" height = "160" align=center />
-<img src="./pic-readme/index-2.png" width = "240" height = "160" align=center />
 <img src="./pic-readme/profile.png" width = "240" height = "160" align=center />
 
 Choose Topic(Student Page)<br />
