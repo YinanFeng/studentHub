@@ -46,12 +46,15 @@ Also, the project support hot reload.
 cd <project-name>
 cd frondend
 npm install
+npm start
 ```
-Install all dependencies
+Install all dependencies and start frontend application
 
 ```
 npm run storybook
 ```
+Show all UI components with storybook
+
 
 `npm install`
 `npm start`
