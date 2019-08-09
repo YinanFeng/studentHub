@@ -2,15 +2,15 @@
 
 
 ### What is Student Hub?
-It is a platform where new university studnet can get information from mentors about university including enrolment, accommodation, society, volunteer opportunity and career planning, whihch enable them have a better preparation for their upcoming uni life. They are able to choose the topic they are interested in and talk to experienced mentors who is specialized at this area.
+It is a platform where new university student can get information from mentors about university including enrolment, accommodation, society, volunteer opportunity and career planning, whihch enable them to have a better preparation for their upcoming uni life. They are able to choose the topic they are interested in and talk to experienced mentors who is specialized at this area.
 
 ### Why we need Student Hub?
-During Oweek in university, the stall provided information about uni is always very busy which cause each student only have very few time to consult. 
-Also, since many student and mentor live far away from uni which make them unable to attend Oweek or only attend for limited time.  
+During Oweek in university, the stall provided information about uni is always very busy which cause each student only has very few time to consult. 
+Also, since many students and mentors live far away from uni which make them unable to attend Oweek or only attend for limited time.  
 In addition, many students complain that oweek is too late to get information. They want to obtain these information before oweek.
 
 
-**Student Hub** can solve all of these problems. It provide remote match/chat platform for students and mentors which enable them to talk at **anytime and anywhere**.
+**Student Hub** can solve all of these problems. It provides remote match/chat platform for students and mentors which enable them to talk at **anytime and anywhere**.
 
 ---
 
